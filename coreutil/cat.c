@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-void usage(char *arg) {
-	printf("usage: %s [-huv] [file [...]]\n", arg);
+void usage() {
+	printf("usage: cat [-huv] [file [...]]\n");
 	printf("    concatenate and print files\n");
 	printf("\n");
 	printf("OPTIONS:\n");
@@ -10,8 +10,8 @@ void usage(char *arg) {
 	printf("     -v      Print version information.\n");
 }
 
-void version(char *arg) {
-	printf("%s v0.1\n", arg);
+void version() {
+	printf("cat v0.1\n");
 }
 
 int main(int argc, char *argv[]) {
