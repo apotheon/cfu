@@ -2,24 +2,24 @@
 #include <string.h>
 
 void usage() {
-	printf("\n");
-	printf("usage: cat [-huv] [file [...]] [post-options]\n");
-	printf("\n");
-	printf("Concatenate and print files.\n");
-	printf("\n");
-	printf("OPTIONS:\n");
-	printf("     --help\n");
-	printf("     -h      Print this help information.\n");
-	printf("\n");
-	printf("     --unbuffered\n");
-	printf("     -u      Disable output buffering.\n");
-	printf("\n");
-	printf("     --version\n");
-	printf("     -v      Print version information.\n");
-	printf("\n");
-	printf("POST-OPTIONS:\n");
-	printf("     |nl     Number lines of output, starting at 1.\n");
-	printf("\n");
+	puts("");
+	puts("usage: cat [-huv] [file [...]] [post-options]");
+	puts("");
+	puts("Concatenate and print files.");
+	puts("");
+	puts("OPTIONS:");
+	puts("     --help");
+	puts("     -h      Print this help information.");
+	puts("");
+	puts("     --unbuffered");
+	puts("     -u      Disable output buffering.");
+	puts("");
+	puts("     --version");
+	puts("     -v      Print version information.");
+	puts("");
+	puts("POST-OPTIONS:");
+	puts("     |nl     Number lines of output, starting at 1.");
+	puts("");
 }
 
 void version() {
