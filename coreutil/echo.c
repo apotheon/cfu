@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+
+/* begin informational output strings */
+
 const char *version_number = "1.0";
+
 
 const char *help_text = "echo - write arguments to standard output\n"
 "\n"
@@ -31,6 +35,7 @@ const char *help_text = "echo - write arguments to standard output\n"
 "     --version\n"
 "             Print version information.\n";
 
+
 const char *license_text = "Copyright 2014 Chad Perrin\n"
 "\n"
 "Permission is hereby granted by the holder(s) of copyright or other le-\n"
@@ -52,6 +57,9 @@ const char *license_text = "Copyright 2014 Chad Perrin\n"
 "BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN ACTION\n"
 "OF CONTRACT, TORT, OR OTHERWISE ARISING FROM, OUT OF, OR IN CONNECTION\n"
 "WITH THE WORK OR THE USE OF OR OTHER DEALINGS IN THE WORK.\n";
+
+/* end informational output strings */
+
 
 /* begin informational option handling */
 
