@@ -93,9 +93,11 @@ void license() {
 	puts("");
 }
 
+/*
 void unbuffered() {
 	puts("Unbuffered use has not yet been implemented.");
 }
+*/
 
 void version() {
 	puts("cat version 0.1, copyright 2014");
@@ -113,7 +115,7 @@ int main(int argc, char *argv[]) {
 		else if (OPT("--license")) license();
 		else if OPT("--version") version();
 		else {
-			if (OPT("-u") || OPT("--unbuffered")) unbuffered();
+			if (OPT("-u") || OPT("--unbuffered")) setbuf(stdout, NULL);
 			/* do something here */
 		}
 	}
