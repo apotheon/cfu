@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+const char *version_number = "1.0";
+
 /* begin informational option handling */
 
 void usage() {
@@ -104,7 +106,7 @@ void license() {
 }
 
 void version() {
-	puts("cat version 0.1, copyright 2014");
+	printf("cat version %s, copyright 2014\n", version_number);
 	puts(
 		"This software may be distributed under the terms of the Open\n"
 		"Works License (OWL).  See http://owl.apotheon.org for details."
