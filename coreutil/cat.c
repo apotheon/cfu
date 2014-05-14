@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 void usage() {
@@ -46,6 +47,8 @@ void usage() {
 	puts("             Number non-empty output lines, starting at 1.");
 	puts("");
 
+	exit(0);
+
 	/* additional needed post-options:
 	 *
 	 * -t      Display non-printing characters (see the -v option), and
@@ -91,6 +94,8 @@ void license() {
 		"WORK OR THE USE OF OR OTHER DEALINGS IN THE WORK."
 	);
 	puts("");
+
+	exit(0);
 }
 
 /*
@@ -105,6 +110,8 @@ void version() {
 		"This software may be distributed under the terms of the Open\n"
 		"Works License (OWL).  See http://owl.apotheon.org for details."
 	);
+
+	exit(0);
 }
 
 
