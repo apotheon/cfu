@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* begin informational option handling */
+
 void usage() {
 	puts("");
 	puts("cat - concatenate and print files");
@@ -98,12 +100,6 @@ void license() {
 	exit(0);
 }
 
-/*
-void unbuffered() {
-	puts("Unbuffered use has not yet been implemented.");
-}
-*/
-
 void version() {
 	puts("cat version 0.1, copyright 2014");
 	puts(
@@ -114,6 +110,7 @@ void version() {
 	exit(0);
 }
 
+/* end informational option handling */
 
 int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
