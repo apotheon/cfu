@@ -15,7 +15,10 @@ void usage() {
 	puts("to standard output.  The file operands are processed in");
 	puts("command line order.  If file is a single dash or absent,");
 	puts("cat reads from standard input.  If file is a Unix domain");
-	puts("socket, cat connects to it and reads it until EOF.");
+	puts("socket, cat connects to it and reads it until EOF.  If");
+	puts("any informational options (help, license, version) are");
+	puts("selected, the first of them will be executed, and the");
+	puts("program will then immediately exit.");
 	puts("");
 	puts("OPTIONS:");
 	puts("");
