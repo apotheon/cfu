@@ -27,13 +27,14 @@ void usage() {
 	puts("             Display non-printing character escapes, and");
 	puts("             dollar signs \"$\" indicating ends of lines.");
 	puts("");
-	puts("     |nl");                               /* -n */
+	puts("     |nl -ba");                           /* -n */
 	puts("             Number lines of output, starting at 1.");
+	puts("");
+	puts("     |nl");                               /* -b */
+	puts("             Number non-empty output lines, starting at 1.");
 	puts("");
 
 	/* additional needed post-options:
-	 *
-	 * -b      Number the non-blank output lines, starting at 1.
 	 *
 	 * -t      Display non-printing characters (see the -v option), and
 	 *         display tab characters as ‘^I’.
