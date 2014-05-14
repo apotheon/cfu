@@ -8,6 +8,7 @@ void usage() {
 	puts("Concatenate and print files.");
 	puts("");
 	puts("OPTIONS:");
+	puts("");
 	puts("     --help");
 	puts("     -h      Print this help information.");
 	puts("");
@@ -18,7 +19,12 @@ void usage() {
 	puts("     -v      Print version information.");
 	puts("");
 	puts("POST-OPTIONS:");
-	puts("     |nl     Number lines of output, starting at 1.");
+	puts("");
+	puts("     |sed -n '/./,/^$/p'");
+	puts("             Squeeze multiple adjacent empty lines.");
+	puts("");
+	puts("     |nl");
+	puts("             Number lines of output, starting at 1.");
 	puts("");
 }
 
