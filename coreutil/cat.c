@@ -20,16 +20,34 @@ void usage() {
 	puts("");
 	puts("POST-OPTIONS:");
 	puts("");
-	puts("     |sed -n '/./,/^$/p'");
+	puts("     |sed -n '/./,/^$/p'");               /* -s */
 	puts("             Squeeze multiple adjacent empty lines.");
 	puts("");
-	puts("     |nl");
+	puts("     |sed -n l");                         /* -e */
+	puts("             Display non-printing character escapes, and");
+	puts("             dollar signs \"$\" indicating ends of lines.");
+	puts("");
+	puts("     |nl");                               /* -n */
 	puts("             Number lines of output, starting at 1.");
 	puts("");
+
+	/* additional needed post-options:
+	 *
+	 * -b      Number the non-blank output lines, starting at 1.
+	 *
+	 * -t      Display non-printing characters (see the -v option), and
+	 *         display tab characters as ‘^I’.
+	 *
+	 * -v      Display non-printing characters so they are visible.  Control
+	 *         characters print as ‘^X’ for control-X; the delete character
+	 *         (octal 0177) prints as ‘^?’.  Non-ASCII characters (with the
+	 *         high bit set) are printed as ‘M-’ (for meta) followed by the
+	 *         character for the low 7 bits.
+	 */
 }
 
 void version() {
-	printf("cat v0.1\n");
+	puts("0.1");
 }
 
 
