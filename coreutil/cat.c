@@ -93,6 +93,10 @@ void license() {
 	puts("");
 }
 
+void unbuffered() {
+	puts("Unbuffered use has not yet been implemented.");
+}
+
 void version() {
 	puts("cat version 0.1, copyright 2014");
 	puts(
@@ -106,14 +110,12 @@ int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
 	for (int i = 1; i < argc; i++) {
 		if (OPT("-h") || OPT("--help")) usage();
-
-		if (OPT("--license")) license();
-
-		if (OPT("-u") || OPT("--unbuffered")) {
-			printf("Unbuffered use has not yet been implemented.\n");
+		else if (OPT("--license")) license();
+		else if OPT("--version") version();
+		else {
+			if (OPT("-u") || OPT("--unbuffered")) unbuffered();
+			/* do something here */
 		}
-
-		if OPT("--version") version();
 	}
 	return 0;
 }
