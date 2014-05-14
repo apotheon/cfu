@@ -16,7 +16,7 @@ void usage() {
 	puts("     -u      Disable output buffering.");
 	puts("");
 	puts("     --version");
-	puts("     -v      Print version information.");
+	puts("             Print version information.");
 	puts("");
 	puts("POST-OPTIONS:");
 	puts("");
@@ -48,7 +48,9 @@ void usage() {
 }
 
 void version() {
-	puts("0.1");
+	puts("cat version 0.1, copyright 2014");
+	puts("This software may be distributed under");
+	puts("the terms of the Open Works License.");
 }
 
 
@@ -61,7 +63,7 @@ int main(int argc, char *argv[]) {
 			printf("Unbuffered use has not yet been implemented.\n");
 		}
 
-		if (OPT("-v") || OPT("--version")) version();
+		if OPT("--version") version();
 	}
 	return 0;
 }
