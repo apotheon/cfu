@@ -144,20 +144,25 @@ int version() {
 
 int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
-	for (int i = 1; i < argc; i++) {
-		if (OPT("-h")) {
-			help();
-		} else if (OPT("-W")) {
-			if (++i < argc) {
-				if (OPT("help")) help();
-				if (OPT("license")) license();
-				if OPT("version") version();
-			}
-			w_usage();
-		} else {
-			if (OPT("-u")) setbuf(stdout, NULL);
-			/* do something here */
+	int i = 1;
+	if (OPT("-h")) {
+		help();
+	} else if (OPT("-W")) {
+		if (++i < argc) {
+			if (OPT("help")) help();
+			if (OPT("license")) license();
+			if (OPT("version")) version();
 		}
+		w_usage();
+	} else if (OPT("-u")) {
+		setbuf(stdout, NULL);
+		++i;
 	}
+
+	while (i < argc) {
+		/* do something here */
+		++i;
+	}
+
 	return 0;
 }
