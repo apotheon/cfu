@@ -6,46 +6,71 @@ const char *version_number = "1.0";
 
 /* begin informational option handling */
 
-void usage() {
+int w_usage() {
+	puts("");
+	puts("usage: cat [-u] [file[ ...]] [post-options]");
+	puts("       cat -W (help|license|version)");
+	puts("");
+	puts("The -W option can take one of three command arguments:");
+	puts("");
+	puts("     help          Print this help information.");
+	puts("");
+	puts("     license       Print license text.");
+	puts("");
+	puts("     version       Print version information.");
+	puts("");
+
+	exit(1);
+}
+
+int help() {
 	puts("");
 	puts("cat - concatenate and print files");
 	puts("");
-	puts("usage: cat [-u|--unbuffered] [file[ ...]] [post-options]");
-	puts("       cat (-h|--help|--license|--version]");
+	puts("usage: cat [-u] [file[ ...]] [post-options]");
+	puts("       cat -W (help|license|version)");
 	puts("");
-	puts("The cat utility reads files sequentially, writing them");
-	puts("to standard output.  The file operands are processed in");
-	puts("command line order.  If file is a single dash or absent,");
-	puts("cat reads from standard input.  If file is a Unix domain");
-	puts("socket, cat connects to it and reads it until EOF.  If");
-	puts("any informational options (help, license, version) are");
-	puts("selected, the first of them will be executed, and the");
-	puts("program will then immediately exit.");
+	puts("The cat utility reads files sequentially, writing them to stan-");
+	puts("dard output.  The file operands are processed in command line");
+	puts("order.  If file is a single dash or absent, cat reads from stan-");
+	puts("dard input.  If file is a Unix domain socket, cat connects to it");
+	puts("and reads it until EOF.  If any the help or any informational");
+	puts("command (license, version) is selected, the first of them will");
+	puts("be executed, and the program will then immediately exit.  All");
+	puts("options are mutually exclusive with other options.");
+	puts("");
+	puts("A single hyphen character as a file operand is interpreted as");
+	puts("referring to the standard input file descriptor.");
 	puts("");
 	puts("OPTIONS:");
 	puts("");
-	puts("     -h");
-	puts("     --help");
-	puts("             Print this help information.");
+	puts("     -h            Print this help information.");
 	puts("");
-	puts("     --license");
-	puts("             Print license text.");
+	puts("     -u            Disable output buffering.");
 	puts("");
-	puts("     -u");
-	puts("     --unbuffered");
-	puts("             Disable output buffering.");
+	puts("     -W <COMMAND>");
 	puts("");
-	puts("     --version");
-	puts("             Print version information.");
+	puts("COMMANDS:");
+	puts("");
+	puts("     help          Print this help information.");
+	puts("");
+	puts("     license       Print license text.");
+	puts("");
+	puts("     version       Print version information.");
 	puts("");
 	puts("POST-OPTIONS:");
 	puts("");
+	puts("Post-options are guidelines for applying filtering capabilities");
+	puts("to cat commands after all operands, using the Unix pipeline to");
+	puts("duplicate the effects of options harmfully integrated with POSIX");
+	puts("noncompliant or otherwise undesirable implementations.");
+	puts("");
 	puts("     |sed -n '/./,/^$/p'");               /* -s */
-	puts("             Squeeze multiple adjacent empty lines.");
+	puts("                   Squeeze multiple adjacent empty lines.");
 	puts("");
 	puts("     |sed -n l");                         /* -e */
-	puts("             Display non-printing character escapes, and");
-	puts("             dollar signs \"$\" indicating ends of lines.");
+	puts("                   Display non-printing character escapes, and");
+	puts("                   dollar signs \"$\" indicating ends of lines.");
 	puts("");
 	puts("     |nl -ba");                           /* -n */
 	puts("             Number lines of output, starting at 1.");
@@ -69,7 +94,7 @@ void usage() {
 	 */
 }
 
-void license() {
+int license() {
 	puts("");
 	puts("Copyright 2014 Chad Perrin");
 	puts("");
@@ -105,7 +130,7 @@ void license() {
 	exit(0);
 }
 
-void version() {
+int version() {
 	printf("cat version %s, copyright 2014\n", version_number);
 	puts(
 		"This software may be distributed under the terms of the Open\n"
@@ -120,11 +145,17 @@ void version() {
 int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
 	for (int i = 1; i < argc; i++) {
-		if (OPT("-h") || OPT("--help")) usage();
-		else if (OPT("--license")) license();
-		else if OPT("--version") version();
-		else {
-			if (OPT("-u") || OPT("--unbuffered")) setbuf(stdout, NULL);
+		if (OPT("-h")) {
+			help();
+		} else if (OPT("-W")) {
+			if (++i < argc) {
+				if (OPT("help")) help();
+				if (OPT("license")) license();
+				if OPT("version") version();
+			}
+			w_usage();
+		} else {
+			if (OPT("-u")) setbuf(stdout, NULL);
 			/* do something here */
 		}
 	}
