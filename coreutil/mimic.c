@@ -63,19 +63,19 @@ const char *license_text = "Copyright 2014 Chad Perrin\n"
 
 /* begin informational option handling */
 
-void help() {
+int help() {
 	printf("\n%s\n", help_text);
 
 	exit(0);
 }
 
-void license() {
+int license() {
 	printf("\n%s\n", license_text);
 
 	exit(0);
 }
 
-void version() {
+int version() {
 	printf("mimic version %s, copyright 2014\n", version_number);
 	puts(
 		"This software may be distributed under the terms of the Open\n"
