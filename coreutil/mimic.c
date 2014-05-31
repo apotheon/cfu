@@ -121,12 +121,14 @@ int main(int argc, char *argv[]) {
 	int startopt = 2;
 
 	if (argc > 1) {
-		if (OPT("-h") || OPT("--help")) {
+		if (OPT("-h")) {
 			help();
+			/*
 		} else if (OPT("--license")) {
 			license();
 		} else if (OPT("--version")) {
 			version();
+			*/
 		} else if (OPT("-n") || OPT("--no-newline")) {
 			nflag = 0;
 		} else {
