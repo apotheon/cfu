@@ -50,6 +50,10 @@ int help() {
 	puts("");
 	puts("     -W <COMMAND>");
 	puts("");
+	puts("     --            If the first option, or the first option fol-");
+	puts("                   lowing -u, the -- option disables any further");
+	puts("                   option handling on the command line.");
+	puts("");
 	puts("COMMANDS:");
 	puts("");
 	puts("     help          Print this help information.");
@@ -163,6 +167,8 @@ int main(int argc, char *argv[]) {
 		setbuf(stdout, NULL);
 		++i;
 	}
+
+	if ((i < argc) && (OPT("--"))) ++i;
 
 	while (i < argc) {
 		cat(argv[i]);
