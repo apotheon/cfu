@@ -38,14 +38,19 @@ const char *usage_text = "echo - write arguments to standard output\n"
 "mand line option.  If it is an informational option (help, license,ver-\n"
 "sion), that option will be executed and the program will then exit.\n"
 "\n"
-"The -n option eliminates the newline character when there are other op-\n"
-"erands.  In cases where the -n option is the only argument, this usage\n"
-"information is printed to standard output.\n";
+"OPTIONS:\n"
+"\n"
+"    -n            Do not print a trailing newline character.  This must\n"
+"                  be the first argument.  Otherwise, it will be used as\n"
+"                  an input string operand.  It must be followed by at\n"
+"                  least one input string operand; otherwise, this usage\n"
+"                  information will be printed to standard output and\n"
+"                  the program will exit with an error value of 1.\n";
 
 
 void usage() {
 	printf("\n%s\n", usage_text);
-	exit(0);
+	exit(1);
 }
 
 
