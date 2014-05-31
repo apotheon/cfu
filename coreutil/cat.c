@@ -152,12 +152,22 @@ int version() {
 /* end informational option handling */
 
 void cat(char *fname) {
-	int in_fd, out_fd;
-	if (!strcmp(fname, "-")) in_fd = fileno(stdin);
-	else in_fd = open(fname, O_RDONLY);
-	close(in_fd);
-	/* This is not a conformant implementation.  Duh. */
-	printf("Concatenate %s to stdout.\n", fname);
+	const int bufsize = 4096;
+	int fd;
+	char *buf[bufsize];
+	ssize_t in_total;
+
+	if (!strcmp(fname, "-")) fd = fileno(stdin);
+	else fd = open(fname, O_RDONLY);
+
+	while ((in_total = read(fd, buf, bufsize)) > 0) {
+		ssize_t written = 0;
+		while (written < in_total) {
+			written = write(STDOUT_FILENO,  buf + written, in_total - written);
+		}
+	}
+
+	close(fd);
 }
 
 int main(int argc, char *argv[]) {
