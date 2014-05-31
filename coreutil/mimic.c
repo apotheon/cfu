@@ -10,17 +10,22 @@ const char *version_number = "1.0";
 
 const char *help_text = "mimic - write arguments to standard output\n"
 "\n"
+/*
 "usage: mimic [-n|--no-newline] [operand [...]]\n"
 "       mimic (-h|--help|--license|--version)\n"
+*/
+"usage: mimic [-n] [operand [...]]\n"
+"       mimic [-h|-W COMMAND]\n"
 "\n"
 "The mimic utility writes any specified operands, separarated by single\n"
 "blank (' ') characters and followed by a newline ('\\n') character, to\n"
 "standard output.  Only the first argument may be recognized as a com-\n"
-"mand line option.  If it is an informational option (help, license,ver-\n"
-"sion), that option will be executed and the program will then exit.\n"
+"mand line option.  If it is an informational option (help, license, or\n"
+"version), that option will be executed and the program will then exit.\n"
 "\n"
 "OPTIONS:\n"
 "\n"
+/*
 "     -h\n"
 "     --help\n"
 "             Print this help information.\n"
@@ -34,6 +39,15 @@ const char *help_text = "mimic - write arguments to standard output\n"
 "\n"
 "     --version\n"
 "             Print version information.\n";
+*/
+"    -h            Print this help information.\n"
+"\n"
+"    -n            Do not print a trailing newline character.\n"
+"\n"
+"    -W <COMMAND>  Print out information specified by <COMMAND>.\n"
+"\n"
+"    --            If the first option, the -- option disables\n"
+"                  further option handling on the command line.\n";
 
 
 const char *license_text = "Copyright 2014 Chad Perrin\n"
