@@ -1,6 +1,8 @@
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 const char *version_number = "1.0";
 
@@ -150,6 +152,10 @@ int version() {
 /* end informational option handling */
 
 void cat(char *fname) {
+	int in_fd, out_fd;
+	if (!strcmp(fname, "-")) in_fd = fileno(stdin);
+	else in_fd = open(fname, O_RDONLY);
+	close(in_fd);
 	/* This is not a conformant implementation.  Duh. */
 	printf("Concatenate %s to stdout.\n", fname);
 }
