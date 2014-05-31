@@ -72,7 +72,7 @@ int help() {
 	puts("duplicate the effects of options harmfully integrated with POSIX");
 	puts("noncompliant or otherwise undesirable implementations.");
 	puts("");
-	puts("     |sed -n '/./,/^$/p'");               /* -s */
+	puts("     |tr -s '\n'");                       /* -s */
 	puts("                   Squeeze multiple adjacent empty lines.");
 	puts("");
 	puts("     |sed -n l");                         /* -e */
