@@ -142,6 +142,11 @@ int version() {
 
 /* end informational option handling */
 
+void cat(char *fname) {
+	/* This is not a conformant implementation.  Duh. */
+	printf("Concatenate %s to stdout.\n", fname);
+}
+
 int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
 	int i = 1;
@@ -160,7 +165,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	while (i < argc) {
-		/* do something here */
+		cat(argv[i]);
 		++i;
 	}
 
