@@ -173,6 +173,7 @@ void cat(char *fname) {
 int main(int argc, char *argv[]) {
 #define OPT(a) (strcmp(argv[i], a) == 0)
 	int i = 1;
+	if (i+1 > argc) help();
 	if (OPT("-h")) {
 		help();
 	} else if (OPT("-W")) {
