@@ -1,60 +1,132 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "commonopts.h"
 
 
+/* begin informational output strings */
+
+const char *version_number = "1.0";
+
+
+const char *help_text = "mimic - write arguments to standard output\n"
+"\n"
 /*
- *
- * Permission is hereby granted by the holder(s) of copyright or other legal
- * privileges, author(s) or assembler(s), and contributor(s) of this work, to
- * any person who obtains a copy of this work in any form, to reproduce,
- * modify, distribute, publish, sell, sublicense, use, and/or otherwise deal in
- * the licensed material without restriction, provided the following conditions
- * are met:
- * 
- * Redistributions, modified or unmodified, in whole or in part, must retain
- * applicable copyright and other legal privilege notices, the above license
- * notice, these conditions, and the following disclaimer.
- * 
- * NO WARRANTY OF ANY KIND IS IMPLIED BY, OR SHOULD BE INFERRED FROM, THIS
- * LICENSE OR THE ACT OF DISTRIBUTION UNDER THE TERMS OF THIS LICENSE,
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR
- * A PARTICULAR PURPOSE, AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS,
- * ASSEMBLERS, OR HOLDERS OF COPYRIGHT OR OTHER LEGAL PRIVILEGE BE LIABLE FOR
- * ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN ACTION OF CONTRACT, TORT,
- * OR OTHERWISE ARISING FROM, OUT OF, OR IN CONNECTION WITH THE WORK OR THE USE
- * OF OR OTHER DEALINGS IN THE WORK.
- *
- */
-
-
-const char *usage_text = "echo - write arguments to standard output\n"
+"usage: mimic [-n|--no-newline] [operand [...]]\n"
+"       mimic (-h|--help|--license|--version)\n"
+*/
+"usage: mimic [-n] [operand [...]]\n"
+"       mimic [-h|-W COMMAND]\n"
 "\n"
-"usage: echo [-n] [operand [...]]\n"
-"\n"
-"The echo utility writes any specified operands, separarated by single\n"
+"The mimic utility writes any specified operands, separarated by single\n"
 "blank (' ') characters and followed by a newline ('\\n') character, to\n"
 "standard output.  Only the first argument may be recognized as a com-\n"
-"mand line option.  If it is an informational option (help, license,ver-\n"
-"sion), that option will be executed and the program will then exit.\n"
+"mand line option.  If it is an informational option (help, license, or\n"
+"version), that option will be executed and the program will then exit.\n"
 "\n"
 "OPTIONS:\n"
 "\n"
-"    -n            Do not print a trailing newline character.  This must\n"
-"                  be the first argument.  Otherwise, it will be used as\n"
-"                  an input string operand.  It must be followed by at\n"
-"                  least one input string operand; otherwise, this usage\n"
-"                  information will be printed to standard output and\n"
-"                  the program will exit with an error value of 1.\n";
+"     -h\n"
+"     --help\n"
+"             Print this help information.\n"
+"\n"
+"     -l\n"
+"     --license\n"
+"             Print license text.\n"
+"\n"
+"     -n\n"
+"     --no-newline\n"
+"             Do not print trailing newline character.\n"
+"\n"
+"     -v\n"
+"     --version\n"
+"             Print version information.\n";
+"\n"
+"     -W <COMMAND>\n"
+"             Print out information specified by <COMMAND>.\n"
+"             (No commands are currently implemented.\n"
+"\n"
+"     --\n"
+"             Disable further option handling on the command line.\n";
 
 
-void usage() {
-	printf("\n%s\n", usage_text);
-	exit(1);
+const char *license_text = "Copyright 2014 Chad Perrin\n"
+"\n"
+"Permission is hereby granted by the holder(s) of copyright or other le-\n"
+"gal privileges, author(s) or assembler(s), and contributor(s) of this\n"
+"work, to any person who obtains a copy of this work in any form, to re-\n"
+"produce, modify, distribute, publish, sell, sublicense, use, and/or\n"
+"otherwise deal in the licensed material without restriction, provided\n"
+"the following conditions are met:\n"
+"\n"
+"Redistributions, modified or unmodified, in whole or in part, must re-\n"
+"tain applicable copyright and other legal privilege notices, the above\n"
+"license notice, these conditions, and the following disclaimer.\n"
+"\n"
+"NO WARRANTY OF ANY KIND IS IMPLIED BY, OR SHOULD BE INFERRED FROM, THIS\n"
+"LICENSE OR THE ACT OF DISTRIBUTION UNDER THE TERMS OF THIS LICENSE, IN-\n"
+"CLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS\n"
+"FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.  IN NO EVENT SHALL THE\n"
+"AUTHORS, ASSEMBLERS, OR HOLDERS OF COPYRIGHT OR OTHER LEGAL PRIVILEGE\n"
+"BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN ACTION\n"
+"OF CONTRACT, TORT, OR OTHERWISE ARISING FROM, OUT OF, OR IN CONNECTION\n"
+"WITH THE WORK OR THE USE OF OR OTHER DEALINGS IN THE WORK.\n";
+
+/* end informational output strings */
+
+
+/* begin informational option handling */
+
+int help() {
+	printf("\n%s\n", help_text);
+
+	exit(0);
 }
 
+int license() {
+	printf("\n%s\n", license_text);
 
-void echo(int newline, char *args[], int start, int end) {
+	exit(0);
+}
+
+int version() {
+	printf("echo version %s, copyright 2014\n", version_number);
+	puts(
+		"This software may be distributed under the terms of the\n"
+		"Detachable Public License (DPL):"
+		"Permission is hereby granted by the holder(s) "
+		"of copyright or other legal\n"
+		"privileges, author(s) or assembler(s), and "
+		"contributor(s) of this work, to\n"
+		"any person who obtains a copy of this work in any form, to reproduce,\n"
+"modify, distribute, publish, sell, sublicense, use, and/or otherwise deal\n"
+"in the licensed material without restriction, provided the following\n"
+"conditions are met.\n"
+
+Redistributions, modified or unmodified, in whole or in part, must make
+applicable copyright and other legal privilege notices, the above license
+notice, these conditions, and the following disclaimer, freely available to
+recipients on distribution through one of the following means, in descending
+order of preferability: incorporated into the work, provided with the work,
+presented via the medium or method of distribution for the work, or upon
+request by recipients of the work while the work is offered for distribution.
+
+NO WARRANTY OF ANY KIND IS IMPLIED BY, OR SHOULD BE INFERRED FROM, THIS LICENSE
+OR THE ACT OF DISTRIBUTION UNDER THE TERMS OF THIS LICENSE, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS, ASSEMBLERS, OR HOLDERS OF
+COPYRIGHT OR OTHER LEGAL PRIVILEGE BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER
+LIABILITY, WHETHER IN ACTION OF CONTRACT, TORT, OR OTHERWISE ARISING FROM, OUT
+OF, OR IN CONNECTION WITH THE WORK OR THE USE OF OR OTHER DEALINGS IN THE WORK.
+	);
+
+	exit(0);
+}
+
+/* end informational option handling */
+
+
+void mimic(int newline, char *args[], int start, int end) {
 	if (start > end) {
 		puts("");
 	} else {
@@ -73,13 +145,24 @@ int main(int argc, char *argv[]) {
 	int startopt = 2;
 
 	if (argc > 1) {
-		if OPT("-n") nflag = 0;
-		else startopt = 1;
+		if (OPT("-h") || OPT("--help")) {
+			help();
+		} else if (OPT("-l") || OPT("--license")) {
+			license();
+		} else if (OPT("-v") || OPT("--version")) {
+			version();
+		} else if (OPT("-n") || OPT("--no-newline")) {
+			nflag = 0;
+		} else if (OPT("-W")) {
+			if (argc > 2) {
+				startopt = 3;
+			} else exit(0);
+		} else {
+			startopt = 1;
+		}
 	}
 
-	if ((argc < 3) && !nflag) usage();
-
-	echo(nflag, argv, startopt, argc);
+	mimic(nflag, argv, startopt, argc);
 
 	return 0;
 }
