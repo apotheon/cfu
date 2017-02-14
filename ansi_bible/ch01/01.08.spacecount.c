@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/*
+ * 01-08: Count the number of characters from each whitespace (blank,
+ *        newline, and tab) character type.
+ */
+
 int main() {
     int c = 0;
     long blanks = 0;
