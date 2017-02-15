@@ -80,6 +80,6 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 
 [cat]: coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
-[coreutil]: dir?ci=tip&name=coreutil
+[coreutil]: coreutil
 [echo]: coreutil/posix/echo.c
 [mimic]: coreutil/mimic.c
