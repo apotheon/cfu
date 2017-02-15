@@ -78,8 +78,8 @@ keeping other tools focused on their purposes and strengths, allowing them to
 offload printability filtering to `|printable`.  The canonical example should
 be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 
-[cat]: https://fossrec.com/u/apotheon/index.cgi/tip/artifact/coreutil/posix/cat.c
-[dog]: artifact?ci=tip&filename="coreutil/posix/cat.c"
+[cat]: trunk/coreutil/posix/cat.c
+[dog]: artifact?ci=tip&filename=coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
 [coreutil]: dir?ci=tip&name=coreutil
 [echo]: artifact?ci=tip&filename=coreutil/posix/echo.c
