@@ -79,8 +79,7 @@ offload printability filtering to `|printable`.  The canonical example should
 be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 
 [cat]: coreutil/posix/cat.c
-[dog]: artifact?ci=tip&filename=coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
-[coreutil]: dir?ci=tip&name=coreutil
+[coreutil]: coreutil/posix/cat.c
 [echo]: artifact?ci=tip&filename=coreutil/posix/echo.c
 [mimic]: artifact?ci=tip&filename=coreutil/mimic.c
