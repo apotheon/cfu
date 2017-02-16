@@ -4,6 +4,10 @@
  * 01-13: Print histograms of word lengths from input.
  */
 
+/*
+ * I thought about using an array for this, because that's what K&R seemed to
+ * want from the exercise, but I like this approach more.
+ */
 
 /*
  * Use a function for the histogram output, even though writing functions other
