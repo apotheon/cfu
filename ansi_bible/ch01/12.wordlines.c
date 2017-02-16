@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+/*
+ * 01-12: Print one word per line from input.
+ */
+
 int main() {
     int c = 0;
 
