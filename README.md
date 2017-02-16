@@ -13,6 +13,10 @@ I may also play around with Unix tool implemenations.
 This isn't so much a map as a highly detailed napkin sketch, and it is not to
 scale, so don't trust it to get you where you're going.
 
+### [ANSI Bible][ansi]
+
+Complete exercises from the ANSI C (second) edition of K&R's White Bible.
+
 ### [Core Unix Utilities][coreutil]
 
 #### [cat][cat]
@@ -78,6 +82,7 @@ keeping other tools focused on their purposes and strengths, allowing them to
 offload printability filtering to `|printable`.  The canonical example should
 be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 
+[ansi]: /u/apotheon/cfu/index.cgi/dir?ci=tip&name=ansi_bible
 [cat]: coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
 [coreutil]: /u/apotheon/cfu/index.cgi/dir?ci=tip&name=coreutil
