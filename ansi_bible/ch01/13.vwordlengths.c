@@ -12,11 +12,13 @@
  * truncated results on both the number of words axis and the word length axis
  * for moderately sized files and for extremely long words (e.g. lengthier
  * German compound words or gratuitously long words such as those longer than
- * "antihyperpolysyllabicsesquipedialianistic").
+ * "antihyperpolysyllabicsesquipedalianistic", because this program should not
+ * print out the answer to the question of life, the universe, and everything,
+ * so that we do not risk waking the a Great Old One).
  */
 
 #define MAXWORDS 70
-#define MAXLENGTH 42
+#define MAXLENGTH 41
 
 int main() {
     int c = 0;
