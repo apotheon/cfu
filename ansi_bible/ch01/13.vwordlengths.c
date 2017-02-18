@@ -14,7 +14,7 @@
  * German compound words or gratuitously long words such as those longer than
  * "antihyperpolysyllabicsesquipedalianistic", because this program should not
  * print out the answer to the question of life, the universe, and everything,
- * so that we do not risk waking the a Great Old One).
+ * so that we do not risk waking a Great Old One).
  */
 
 #define MAXWORDS 70
