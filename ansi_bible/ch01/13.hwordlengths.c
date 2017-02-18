@@ -6,13 +6,13 @@
 
 /*
  * I thought about using an array for this, because that's what K&R seemed to
- * want from the exercise, but I like this approach more.
+ * want from the exercise, but I like this approach more for horizontal lines.
  */
 
 /*
  * Use a function for the histogram output, even though writing functions other
- * than main() have not yet been introduced at this point in K&R, because it
- * makes for a better organized program this way.
+ * than main() have not yet been introduced at this point in K&R.  I think this
+ * just makes for a better-organized program.
  */
 
 void print_histogram(int characters) {
