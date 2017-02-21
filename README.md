@@ -8,6 +8,9 @@ Language*) again, and any excercises I tackle will be included here.
 
 I may also play around with Unix tool implemenations.
 
+* [Fossil Repository](https://fossrec.com/u/apotheon/cfu)
+* [GitHub Mirror](https://github.com/apotheon/cfu)
+
 ## Roadmap
 
 This isn't so much a map as a highly detailed napkin sketch, and it is not to
