@@ -10,9 +10,7 @@ int main() {
     for (int i = 1; (c = getchar()) != EOF; ++i) {
         if (c == '\t') {
             int s = 0;
-
-            for (; s < next_tabstop(i, TAB); ++s) putchar(' ');
-            putchar(' ');
+            for (putchar(' '); s < next_tabstop(i, TAB); ++s) putchar(' ');
 
             i = i + s;
         } else {
