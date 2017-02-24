@@ -2,6 +2,14 @@
 
 #define TAB 8
 
+/*
+ * 01-20: Replace tabs with spaces for a preset tab stop column width.
+ */
+
+/*
+ * Standard "cheating" disclaimers with regard to exercise assumptions apply.
+ */
+
 int next_tabstop(int columns, int tabsize);
 
 int main() {
