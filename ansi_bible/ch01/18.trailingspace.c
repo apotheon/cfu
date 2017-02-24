@@ -14,12 +14,10 @@
 int clean_line(char line[], int maxlength);
 
 int main() {
-    int length = 0;
-
     char line[MAXLENGTH];
     memset(line, 0, MAXLENGTH);
 
-    while ((length = clean_line(line, MAXLENGTH)) > 0) printf("%s", line);
+    while (clean_line(line, MAXLENGTH) > 0) printf("%s", line);
 
     return 0;
 }
