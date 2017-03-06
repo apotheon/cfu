@@ -1,4 +1,4 @@
-# C Fu
+# C-Fu
 
 This project is a catch-all "C practice" repository.  I'm basically just
 spraying rust-remover all over my C skills.
