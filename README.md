@@ -16,6 +16,10 @@ I may also play around with Unix tool implemenations.
 This isn't so much a map as a highly detailed napkin sketch, and it is not to
 scale, so don't trust it to get you where you're going.
 
+### adhockery
+
+#### [floaters][floaters]
+
 ### [ANSI Bible][ansi]
 
 Complete exercises from the ANSI C (second) edition of K&R's White Bible.
@@ -90,4 +94,5 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [cat-v]: http://harmful.cat-v.org/cat-v/
 [coreutil]: /u/apotheon/cfu/index.cgi/dir?ci=tip&name=coreutil
 [echo]: coreutil/posix/echo.c
+[floaters]: file?ci=tip&name=adhockery/floaters.c
 [mimic]: coreutil/mimic.c
