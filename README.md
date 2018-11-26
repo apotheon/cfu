@@ -24,6 +24,15 @@ Demonstrate problems with the IEEE 754 standard used as the default fractional
 numeric type, and incidentally test the host system's C implementation for
 problems with IEEE 754 binary rounding translation to decimal.
 
+#### [ptrmgc][ptrmgc]
+
+Demonstrate simple use of function pointers with explicit dereference syntax.
+
+#### [ternary_associativity][ternass]
+
+Use the FIVE test to demonstrate ternary operator associativity in C, in
+contrast with the utter brokenness of ternary operator associativity in PHP.
+
 ### [ANSI Bible][ansi]
 
 Complete exercises from the ANSI C (second) edition of K&R's White Bible.
@@ -101,3 +110,5 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
 [mimic]: coreutil/mimic.c
+[ptrmgc]: /file?ci=tip&name=adhockery/ptrmgc.c
+[ternass]: /file?ci=tip&name=adhockery/ternary_associativity.c
