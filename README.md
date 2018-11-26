@@ -93,10 +93,11 @@ keeping other tools focused on their purposes and strengths, allowing them to
 offload printability filtering to `|printable`.  The canonical example should
 be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 
-[ansi]: /u/apotheon/cfu/index.cgi/dir?ci=tip&name=ansi_bible
+[adhockery]: /dir?ci=tip&name=adhockery
+[ansi]: /dir?ci=tip&name=ansi_bible
 [cat]: coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
-[coreutil]: /u/apotheon/cfu/index.cgi/dir?ci=tip&name=coreutil
+[coreutil]: /dir?ci=tip&name=coreutil
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
 [mimic]: coreutil/mimic.c
