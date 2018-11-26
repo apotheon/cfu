@@ -16,6 +16,10 @@ int main() {
 		puts("floating point numbers, you will eventually be disappointed.\n");
 		printf("             0.1 + 0.2 != %20.19f\n", 0.1 + 0.2);
 		printf("                         %d != %d\n\n", (int)(x * 10), count);
+		puts("\nThis is an example of why default floats in a language using");
+		puts("decimal numerals by default should be decimal floats instead");
+		puts("of binary floats.  IEEE 754 should only be used as the float");
+		puts("type for binary numbers or when explicitly declared in code.\n");
 	}
 
 	return 0;
