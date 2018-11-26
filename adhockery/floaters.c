@@ -4,7 +4,7 @@ int main() {
 	int count = 1;
 	float x = 0.1;
 
-	while (count <= 500) {
+	while (count < 500) {
 		x += 0.1;
 		++count;
 	}
@@ -32,7 +32,7 @@ int main() {
 	 *   floating point numbers, you will eventually be disappointed.    *
 	 *                                                                   *
 	 *                0.1 + 0.2 != 0.3000000000000000444                 *
-	 *                            500 != 501                             *
+	 *                            499 != 500                             *
 	 *                                                                   *
 	 *   This is an example of why default floats in a language using    *
 	 *   decimal numerals by default should be decimal floats instead    *
