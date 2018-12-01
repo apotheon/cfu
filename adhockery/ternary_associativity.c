@@ -26,6 +26,8 @@ int main() {
     return 0;
 }
 
+/* C Output: 3 */
+
 /* PHP Example:
 
     result = (
