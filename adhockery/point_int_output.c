@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/* demonstrate difference between pointer and nonpointer ints */
+/* show values for various addr, deref, and val evaluations */
+
 int main() {
 	int nonpointer = 5;
 	int *pointer = &nonpointer;
