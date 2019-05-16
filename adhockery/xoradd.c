@@ -4,15 +4,17 @@
 #include <string.h>
 
 int help(char *option) {
-	if (strncmp(option, "-h", 8) == 0) {
-		return 1;
-	} else if (strncmp(option, "--help", 8) == 0) {
-		return 1;
-	} else if (strncmp(option, "help", 8) == 0) {
-		return 1;
-	} else {
-		return 0;
-	}
+	if (strncmp(option, "-h", 8) == 0) return 1;
+	else if (strncmp(option, "--help", 8) == 0) return 1;
+	else if (strncmp(option, "help", 8) == 0) return 1;
+	else return 0;
+}
+
+int recurse(char *option) {
+	if (strncmp(option, "-r", 16) == 0) return 1;
+	else if (strncmp(option, "--recurse", 16) == 0) return 1;
+	else if (strncmp(option, "recurse", 16) == 0) return 1;
+	else return 0;
 }
 
 void print_help() {
@@ -21,12 +23,9 @@ void print_help() {
 	puts("");
 	puts("This program produces the sum of the numbers <number1> and");
 	puts("<number2> using the xor operator instead of the addition operator.");
-	puts("");
-	puts("If the <number1> an <number2> arguments are not numbers, something");
-	puts("probably happens.");
 }
 
-int xoradd(char *x_arg, char *y_arg) {
+int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
 	long long x, y;
 	const char *errstr;
 
@@ -57,19 +56,14 @@ int xoradd(char *x_arg, char *y_arg) {
 }
 
 int main(int argc, char **argv) {
-	int help_opt = 0;
+	int recurse_opt = 0;
 
-	if (argc == 3) {
-		return xoradd(*(argv + 1), *(argv + 2));
-	} else if (argc == 4) {
-		help_opt = help(*(argv + 1));
-
-		/*
-		int recurse = 0;
-		if (strncmp(*(argv + 1), "-r", 8) == 0) ++recurse;
-		if (strncmp(*(argv + 1), "--recurse", 8) == 0) ++recurse;
-		if (strncmp(*(argv + 1), "recurse", 8) == 0) ++recurse;
-		*/
+	if (help(*(argv + 1))) {
+		print_help();
+	} else if (recurse(*(argv + 1))) {
+		++recurse_opt;
+	} else if (argc >= 3) {
+		return xoradd(*(argv + 1), *(argv + 2), recurse_opt);
 	} else {
 		print_help();
 	}
