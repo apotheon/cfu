@@ -36,11 +36,14 @@ long long iterative_add(long long x, long long y) {
 	return x;
 }
 
-int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
+long long recursive_add(long long x, long long y) {
+	return x;
+}
+
+int xoradd(char *x_arg, char *y_arg, int r_opt) {
 	long long x, y;
 	const char *errstr;
 
-	x_arg = x_arg + recurse_opt;
 	x = strtonum(x_arg, -1024, 1024, &errstr);
 
 	if (errstr != NULL) {
@@ -48,7 +51,6 @@ int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
 		return 1;
 	}
 
-	y_arg = y_arg + recurse_opt;
 	y = strtonum(y_arg, -1024, 1024, &errstr);
 
 	if (errstr != NULL) {
@@ -57,20 +59,23 @@ int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
 	}
 
 	printf("%lld + %lld = ", x, y);
-	printf("%lld\n", iterative_add(x, y));
+	printf("%lld\n", (r_opt ? recursive_add(x, y) : iterative_add(x, y)));
 
 	return 0;
 }
 
 int main(int argc, char **argv) {
-	int recurse_opt = 0;
+	int r_opt = 0;
 
 	if (help(*(argv + 1))) {
 		print_help();
+		return 0;
 	} else if (recurse(*(argv + 1))) {
-		++recurse_opt;
-	} else if (argc >= 3) {
-		return xoradd(*(argv + 1), *(argv + 2), recurse_opt);
+		++r_opt;
+	}
+
+	if (5 > argc && argc > 2) {
+		return xoradd(*(argv + 1 + r_opt), *(argv + 2 + r_opt), r_opt);
 	} else {
 		print_help();
 	}
