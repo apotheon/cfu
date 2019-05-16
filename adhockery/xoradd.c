@@ -36,8 +36,8 @@ long long i_add(long long x, long long y) {
 }
 
 long long r_add(long long x, long long y) {
-	if (y != 0) return r_add(x ^ y, (x & y) << 1);
-	else return x;
+	if (y == 0) return x;
+	else return r_add(x ^ y, (x & y) << 1);
 }
 
 int xoradd(char *x_arg, char *y_arg, int r_opt) {
