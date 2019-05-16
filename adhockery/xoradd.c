@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
 		++r_opt;
 	}
 
-	if (5 > argc && argc > 2) {
+	if ((argc == 3) || ((argc == 4) && r_opt)) {
 		return xoradd(*(argv + 1 + r_opt), *(argv + 2 + r_opt), r_opt);
 	} else {
 		print_help();
