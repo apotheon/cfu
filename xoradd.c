@@ -2,7 +2,14 @@
 #include <stdlib.h>
 
 long long xoradd(long long x, long long y) {
-	return x + y;
+	while (y != 0) {
+		long long carry = x & y;
+
+		x = x ^ y;
+		y = carry << 1;
+	}
+
+	return x;
 }
 
 int main(int argc, char **argv) {
