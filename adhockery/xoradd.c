@@ -17,12 +17,14 @@ int recurse(char *option) {
 	else return 0;
 }
 
-void print_help() {
+int print_help() {
 	puts("USAGE: xoradd <-h|--help|help>");
 	puts("              <number1> <number2>");
 	puts("");
 	puts("This program produces the sum of the numbers <number1> and");
 	puts("<number2> using the xor operator instead of the addition operator.");
+
+	return 0;
 }
 
 long long i_add(long long x, long long y) {
@@ -68,8 +70,7 @@ int main(int argc, char **argv) {
 	int r_opt = 0;
 
 	if (help(*(argv + 1))) {
-		print_help();
-		return 0;
+		return print_help();
 	} else if (recurse(*(argv + 1))) {
 		++r_opt;
 	}
@@ -77,8 +78,6 @@ int main(int argc, char **argv) {
 	if ((argc == 3) || ((argc == 4) && r_opt)) {
 		return xoradd(*(argv + 1 + r_opt), *(argv + 2 + r_opt), r_opt);
 	} else {
-		print_help();
+		return print_help();
 	}
-
-	return 0;
 }
