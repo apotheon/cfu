@@ -3,17 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-long long xoradd(long long x, long long y) {
-	while (y != 0) {
-		long long carry = x & y;
-
-		x = x ^ y;
-		y = carry << 1;
-	}
-
-	return x;
-}
-
 int help(char *option) {
 	if (strncmp(option, "-h", 8) == 0) {
 		return 1;
@@ -37,27 +26,50 @@ void print_help() {
 	puts("probably happens.");
 }
 
+int xoradd(char *x_arg, char *y_arg) {
+	long long x, y;
+	const char *errstr;
+
+	x = strtonum(x_arg, -1024, 1024, &errstr);
+	if (errstr != NULL) {
+		errx(1, "%s: %s", errstr, x_arg);
+		return 1;
+	}
+
+	y = strtonum(y_arg, -1024, 1024, &errstr);
+	if (errstr != NULL) {
+		errx(1, "%s: %s", errstr, y_arg);
+		return 1;
+	}
+
+	printf("%lld, %lld\n", x, y);
+
+	while (y != 0) {
+		long long carry = x & y;
+
+		x = x ^ y;
+		y = carry << 1;
+	}
+
+	printf("%lld\n", x);
+
+	return 0;
+}
+
 int main(int argc, char **argv) {
 	int help_opt = 0;
 
 	if (argc == 3) {
-		long long x, y;
-		const char *errstr;
+		return xoradd(*(argv + 1), *(argv + 2));
+	} else if (argc == 4) {
+		help_opt = help(*(argv + 1));
 
-		x = strtonum(*(argv + 1), -1024, 1024, &errstr);
-		if (errstr != NULL) {
-			errx(1, "%s: %s", errstr, *(argv + 1));
-			return 1;
-		}
-
-		y = strtonum(*(argv + 2), -1024, 1024, &errstr);
-		if (errstr != NULL) {
-			errx(1, "%s: %s", errstr, *(argv + 2));
-			return 1;
-		}
-
-		printf("%lld, %lld\n", x, y);
-		printf("%lld\n", xoradd(x, y));
+		/*
+		int recurse = 0;
+		if (strncmp(*(argv + 1), "-r", 8) == 0) ++recurse;
+		if (strncmp(*(argv + 1), "--recurse", 8) == 0) ++recurse;
+		if (strncmp(*(argv + 1), "recurse", 8) == 0) ++recurse;
+		*/
 	} else {
 		print_help();
 	}
