@@ -19,10 +19,15 @@ int recurse(char *option) {
 
 int print_help() {
 	puts("USAGE: xoradd <-h|--help|help>");
-	puts("              <number1> <number2>");
+	puts("              [-r|--recurse|recurse] <num1> <num2>");
 	puts("");
-	puts("This program produces the sum of the numbers <number1> and");
-	puts("<number2> using the xor operator instead of the addition operator.");
+	puts("This program produces the sum of the numbers <num1> and <num2>");
+	puts("using the xor operator instead of the addition operator.");
+	puts("");
+	puts("The recurse option instructs xoradd to use xor recursively to add");
+	puts("the provided numbers, instead of iteratively.");
+	puts("");
+	puts("The help option displays this help text and exits.");
 
 	return 0;
 }
