@@ -25,24 +25,7 @@ void print_help() {
 	puts("<number2> using the xor operator instead of the addition operator.");
 }
 
-int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
-	long long x, y;
-	const char *errstr;
-
-	x = strtonum(x_arg, -1024, 1024, &errstr);
-	if (errstr != NULL) {
-		errx(1, "%s: %s", errstr, x_arg);
-		return 1;
-	}
-
-	y = strtonum(y_arg, -1024, 1024, &errstr);
-	if (errstr != NULL) {
-		errx(1, "%s: %s", errstr, y_arg);
-		return 1;
-	}
-
-	printf("%lld, %lld\n", x, y);
-
+long long iterative_add(long long x, long long y) {
 	while (y != 0) {
 		long long carry = x & y;
 
@@ -50,7 +33,31 @@ int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
 		y = carry << 1;
 	}
 
-	printf("%lld\n", x);
+	return x;
+}
+
+int xoradd(char *x_arg, char *y_arg, int recurse_opt) {
+	long long x, y;
+	const char *errstr;
+
+	x_arg = x_arg + recurse_opt;
+	x = strtonum(x_arg, -1024, 1024, &errstr);
+
+	if (errstr != NULL) {
+		errx(1, "%s: %s", errstr, x_arg);
+		return 1;
+	}
+
+	y_arg = y_arg + recurse_opt;
+	y = strtonum(y_arg, -1024, 1024, &errstr);
+
+	if (errstr != NULL) {
+		errx(1, "%s: %s", errstr, y_arg);
+		return 1;
+	}
+
+	printf("%lld + %lld = ", x, y);
+	printf("%lld\n", iterative_add(x, y));
 
 	return 0;
 }
