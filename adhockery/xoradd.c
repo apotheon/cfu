@@ -25,10 +25,9 @@ void print_help() {
 	puts("<number2> using the xor operator instead of the addition operator.");
 }
 
-long long iterative_add(long long x, long long y) {
+long long i_add(long long x, long long y) {
 	while (y != 0) {
 		long long carry = x & y;
-
 		x = x ^ y;
 		y = carry << 1;
 	}
@@ -36,8 +35,9 @@ long long iterative_add(long long x, long long y) {
 	return x;
 }
 
-long long recursive_add(long long x, long long y) {
-	return x;
+long long r_add(long long x, long long y) {
+	if (y != 0) return r_add(x ^ y, (x & y) << 1);
+	else return x;
 }
 
 int xoradd(char *x_arg, char *y_arg, int r_opt) {
@@ -59,7 +59,7 @@ int xoradd(char *x_arg, char *y_arg, int r_opt) {
 	}
 
 	printf("%lld + %lld = ", x, y);
-	printf("%lld\n", (r_opt ? recursive_add(x, y) : iterative_add(x, y)));
+	printf("%lld\n", (r_opt ? r_add(x, y) : i_add(x, y)));
 
 	return 0;
 }
