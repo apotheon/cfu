@@ -3,6 +3,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+int help(char *option);
+int recurse(char *option);
+int print_help();
+long long i_add(long long x, long long y);
+long long r_add(long long x, long long y);
+int xoradd(char *x_arg, char *y_arg, int r_opt);
+
+int main(int argc, char **argv) {
+	int r_opt = 0;
+
+	if (help(*(argv + 1))) {
+		return print_help();
+	} else if (recurse(*(argv + 1))) {
+		++r_opt;
+	}
+
+	if ((argc == 3) || ((argc == 4) && r_opt)) {
+		return xoradd(*(argv + 1 + r_opt), *(argv + 2 + r_opt), r_opt);
+	} else {
+		return print_help();
+	}
+}
+
 int help(char *option) {
 	if (strncmp(option, "-h", 8) == 0) return 1;
 	else if (strncmp(option, "--help", 8) == 0) return 1;
@@ -69,20 +92,4 @@ int xoradd(char *x_arg, char *y_arg, int r_opt) {
 	printf("%lld\n", (r_opt ? r_add(x, y) : i_add(x, y)));
 
 	return 0;
-}
-
-int main(int argc, char **argv) {
-	int r_opt = 0;
-
-	if (help(*(argv + 1))) {
-		return print_help();
-	} else if (recurse(*(argv + 1))) {
-		++r_opt;
-	}
-
-	if ((argc == 3) || ((argc == 4) && r_opt)) {
-		return xoradd(*(argv + 1 + r_opt), *(argv + 2 + r_opt), r_opt);
-	} else {
-		return print_help();
-	}
 }
