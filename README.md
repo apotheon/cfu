@@ -10,6 +10,7 @@ I may also play around with Unix tool implemenations.
 
 * [Fossil Repository](https://fossrec.com/u/apotheon/cfu)
 * [GitHub Mirror](https://github.com/apotheon/cfu)
+* [GitLab Mirror](https://gitlab.com/apotheon/cfu)
 
 ## Roadmap
 
