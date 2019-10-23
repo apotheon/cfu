@@ -170,8 +170,8 @@ void cat(char *fname) {
 	close(fd);
 }
 
-int main(int argc, char *argv[]) {
-#define OPT(a) (strcmp(argv[i], a) == 0)
+int main(int argc, char **argv) {
+#define OPT(a) (strcmp(*(argv + i), a) == 0)
 	int i = 1;
 	if (i+1 > argc) help();
 	if (OPT("-h")) {
@@ -191,7 +191,7 @@ int main(int argc, char *argv[]) {
 	if ((i < argc) && (OPT("--"))) ++i;
 
 	while (i < argc) {
-		cat(argv[i]);
+		cat(*(argv + i));
 		++i;
 	}
 
