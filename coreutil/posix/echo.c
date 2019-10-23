@@ -54,12 +54,12 @@ void usage() {
 }
 
 
-void echo(int newline, char *args[], int start, int end) {
+void echo(int newline, char **args, int start, int end) {
 	if (start > end) {
 		puts("");
 	} else {
 		for (int i = start; i < end; i++) {
-			printf("%s", args[i]);
+			printf("%s", *(args + i));
 			if ((i+1) < end) printf(" ");
 			else if (newline) puts("");
 		}
@@ -67,8 +67,8 @@ void echo(int newline, char *args[], int start, int end) {
 }
 
 
-int main(int argc, char *argv[]) {
-#define OPT(a) (strcmp(argv[1], a) == 0)
+int main(int argc, char **argv) {
+#define OPT(a) (strcmp(*(argv + 1), a) == 0)
 	int nflag = 1;
 	int startopt = 2;
 
