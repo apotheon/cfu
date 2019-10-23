@@ -111,7 +111,7 @@ int version() {
 /* end informational option handling */
 
 
-void mimic(int newline, char *args[], int start, int end) {
+void mimic(int newline, char **args, int start, int end) {
 	if (start > end) {
 		puts("");
 	} else {
