@@ -21,7 +21,7 @@ char *copystr(char *dest, const char *source) {
 	do {
 		*(dest + i) = *(source + i);
 		++i;
-	} while (*(source + i) != '\0');
+	} while (*(source + i));
 
 	return dest;
 }
