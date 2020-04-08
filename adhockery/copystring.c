@@ -54,9 +54,6 @@ int cpstr_bylen(char *dest, int len, const char *source) {
 		++i;
 	} while (*(source + i) && (i < len));
 
-	if (i >= len) {
-		return strlen(dest) - strlen(source);
-	} else {
-		return 0;
-	}
+	if (i >= len) return strlen(dest) - strlen(source);
+	else return 0;
 }
