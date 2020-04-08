@@ -5,12 +5,10 @@ char *copystr(char *dest, const char *source);
 
 int main() {
 	int units = 16;
-	char *arr = calloc(units, sizeof(*arr));
 
-	copystr(arr, "Copy my string.");
-	puts(arr);
-
-	free(arr);
+	char *arr0 = calloc(units, sizeof(*arr0));
+	printf("copystr:        %s\n", copystr(arr0, "Copy my string."));
+	free(arr0);
 
 	return 0;
 }
