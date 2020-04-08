@@ -10,6 +10,8 @@ int main() {
 	copystr(arr, "Copy my string.");
 	puts(arr);
 
+	free(arr);
+
 	return 0;
 }
 
