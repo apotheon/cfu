@@ -19,6 +19,15 @@ scale, so don't trust it to get you where you're going.
 
 ### [adhockery][adhockery]
 
+#### [copystring][copystring]
+
+Provide an alternative implementation of the naive strcmp replacement shown in
+Ted Jensen's public domain short ebook *A Tutorial On Pointers And Arrays In C*
+from the beginning of Chapter 4 with an example of use.  Further, provide a
+less naive implementation by including bounds checking, and demonstrate both
+the ideal use case and the unhappy-path use case where the source string is
+longer than the space allocated for the destination buffer.
+
 #### [floaters][floaters]
 
 Demonstrate problems with the IEEE 754 standard used as the default fractional
@@ -107,6 +116,7 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [ansi]: /dir?ci=tip&name=ansi_bible
 [cat]: coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
+[copystring]: dir?ci=tip&name=adhockery/copystring.c
 [coreutil]: /dir?ci=tip&name=coreutil
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
