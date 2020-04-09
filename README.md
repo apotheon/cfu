@@ -116,7 +116,7 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [ansi]: /dir?ci=tip&name=ansi_bible
 [cat]: coreutil/posix/cat.c
 [cat-v]: http://harmful.cat-v.org/cat-v/
-[copystring]: dir?ci=tip&name=adhockery/copystring.c
+[copystring]: /file?ci=tip&name=adhockery/copystring.c
 [coreutil]: /dir?ci=tip&name=coreutil
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
