@@ -77,10 +77,18 @@ void linedel() {
 }
 
 void usage(char *cmdtxt) {
-	printf("%s: downcounter <NUM>\n", cmdtxt);
-	puts("        NUM is a positive number, base ten.");
-	puts("        Count down from NUM to 0, and beep.");
-	printf("        NUM must be no more than %d digits.\n", MAXDIGITS);
+	puts("USAGE:");
+	printf("     %s <NUM>\n\n", cmdtxt);
+
+	puts("DESCRIPTION:");
+	printf("     Count down from NUM to 0, and beep.\n\n");
+
+	puts("ARGUMENTS/OPTIONS:");
+	printf("     NUM must be a positive base-10 number no more than ");
+	printf("%d digits long.\n\n", MAXDIGITS);
+	printf("     For any other argument, or for a missing argument, ");
+	printf("print this message.\n\n");
+
 }
 
 void tickprint(long long sec) {
