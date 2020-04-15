@@ -4,15 +4,6 @@
 #include <time.h>
 #include <unistd.h>
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- * This is a naive implementation, in that it bases its count on Unix time   *
- * seconds.  Ideally, it should instead check for millions of microseconds   *
- * since the last tick.  Given the only one-second precision based on clock  *
- * time, the first "second" may actually range anywhere from about a second  *
- * down to about zero seconds.  Subsequent seconds should be of fairly       *
- * accurate length, at a 100 microsecond level of precision.                 *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
-
 #define MAXDIGITS 16
 
 int invalidnum(char *numarg, long long seconds);
