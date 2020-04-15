@@ -15,6 +15,10 @@
 
 #define MAXDIGITS 16
 
+int negative(long long seconds);
+int oversize(char *numarg);
+int invalidnum(char *numarg, long long seconds);
+
 void linedel();
 void usage(char *cmdtxt);
 void tickprint(long long sec);
@@ -26,7 +30,7 @@ int main(int argc, char **argv) {
 		char **endptr = calloc(2, sizeof(endptr));
 		long long seconds = strtoll(*(argv + 1), endptr, 10);
 
-		if ((strnlen(*endptr, 2) != '\0') || (strnlen(*(argv + 1), MAXDIGITS * 2) > MAXDIGITS)) {
+		if ((strnlen(*endptr, 2) != '\0') || invalidnum(*(argv + 1), seconds)) {
 			usage(*argv);
 		} else {
 			time_t curtime = time(NULL);
@@ -53,12 +57,28 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
+int invalidnum(char *numarg, long long seconds) {
+	return (oversize(numarg) || negative(seconds));
+}
+
+int negative(long long seconds) {
+	if (seconds >= 0) return 0;
+	else return 1;
+}
+
+int oversize(char *numarg) {
+	if (strnlen(numarg, MAXDIGITS * 2) <= MAXDIGITS) return 0;
+	else return 1;
+}
+
 void linedel() {
 	for (int i = MAXDIGITS; i >= 0; --i) printf("\b");
+	fflush(stdout);
 }
 
 void usage(char *cmdtxt) {
 	printf("%s: downcounter <NUM>\n", cmdtxt);
+	puts("        NUM is a positive number, base ten.");
 	puts("        Count down from NUM to 0, and beep.");
 	printf("        NUM must be no more than %d digits.\n", MAXDIGITS);
 }
