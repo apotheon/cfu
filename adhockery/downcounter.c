@@ -13,11 +13,11 @@ int oversize(char *numarg);
 
 void linedel();
 void tickprint(long long sec);
-void usage(char *cmdtxt);
+void usage();
 
 int main(int argc, char **argv) {
 	if (argc != 2) {
-		usage(*argv);
+		usage();
 		return 0;
 	}
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv) {
 	long long seconds = strtoll(*(argv + 1), endptr, 10);
 
 	if (invalidnum(*(argv + 1), *endptr, seconds)) {
-		usage(*argv);
+		usage();
 		return 0;
 	}
 
@@ -73,6 +73,13 @@ int oversize(char *numarg) {
 }
 
 void linedel() {
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+	 * "\33[2K" deletes all text on the present line; "\r" sends the cursor  *
+	 * back to the beginning of the line.  This is necessary to allow the    *
+	 * counter to appear to decrement in place.  Flushing stdout ensures all *
+	 * non-displaying characters will actually print to clear the text.      *
+	\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 	printf("\33[2K\r");
 	fflush(stdout);
 }
@@ -83,9 +90,9 @@ void tickprint(long long sec) {
 	fflush(stdout);
 }
 
-void usage(char *cmdtxt) {
+void usage() {
 	puts("USAGE:");
-	printf("     %s <NUM>\n\n", cmdtxt);
+	printf("     %s <NUM>\n\n", getprogname());
 
 	puts("DESCRIPTION:");
 	printf("     Count down from NUM to 0, and beep.\n\n");
