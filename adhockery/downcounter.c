@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
 			time_t curtime = time(NULL);
 			time_t newtime = 0;
 
+			puts("");
 			tickprint(seconds);
 
 			while (seconds > 0) {
@@ -50,7 +51,7 @@ int main(int argc, char **argv) {
 			}
 
 			linedel();
-			printf("\aTIME'S UP!\n");
+			puts("\aTIME'S UP!\n");
 		}
 	}
 
@@ -78,7 +79,7 @@ void linedel() {
 
 void tickprint(long long sec) {
 	linedel();
-	printf("%lld", sec);
+	printf("\t%lld\t", sec);
 	fflush(stdout);
 }
 
