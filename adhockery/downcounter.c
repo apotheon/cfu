@@ -20,11 +20,15 @@ void usage(char *cmdtxt);
 void tickprint(long long sec);
 
 int main(int argc, char **argv) {
-	if (argc == 2) {
+	if (argc != 2) {
+		usage(*argv);
+	} else {
 		char **endptr = calloc(MAXDIGITS, sizeof(endptr));
 		long long seconds = strtoll(*(argv + 1), endptr, 10);
 
-		if (strnlen(*endptr, 2) == '\0') {
+		if (strnlen(*endptr, 2) != '\0') {
+			usage(*argv);
+		} else {
 			time_t curtime = time(NULL);
 			time_t newtime = 0;
 
@@ -43,11 +47,7 @@ int main(int argc, char **argv) {
 
 			linedel();
 			printf("\aTIME'S UP!\n");
-		} else {
-			usage(*argv);
 		}
-	} else {
-		usage(*argv);
 	}
 
 	return 0;
