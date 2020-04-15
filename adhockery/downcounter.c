@@ -23,10 +23,10 @@ int main(int argc, char **argv) {
 	if (argc != 2) {
 		usage(*argv);
 	} else {
-		char **endptr = calloc(MAXDIGITS, sizeof(endptr));
+		char **endptr = calloc(2, sizeof(endptr));
 		long long seconds = strtoll(*(argv + 1), endptr, 10);
 
-		if (strnlen(*endptr, 2) != '\0') {
+		if ((strnlen(*endptr, 2) != '\0') || (strnlen(*(argv + 1), MAXDIGITS * 2) > MAXDIGITS)) {
 			usage(*argv);
 		} else {
 			time_t curtime = time(NULL);
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 }
 
 void linedel() {
-	for (int i = MAXDIGITS; i > 0; --i) printf("\b");
+	for (int i = MAXDIGITS; i >= 0; --i) printf("\b");
 }
 
 void usage(char *cmdtxt) {
@@ -65,6 +65,6 @@ void usage(char *cmdtxt) {
 
 void tickprint(long long sec) {
 	linedel();
-	printf("%lld\t", sec);
+	printf("%lld", sec);
 	fflush(stdout);
 }
