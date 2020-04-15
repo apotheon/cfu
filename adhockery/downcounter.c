@@ -17,34 +17,36 @@ void usage(char *cmdtxt);
 int main(int argc, char **argv) {
 	if (argc != 2) {
 		usage(*argv);
-	} else {
-		char **endptr = calloc(2, sizeof(endptr));
-		long long seconds = strtoll(*(argv + 1), endptr, 10);
+		return 0;
+	}
 
-		if ((strnlen(*endptr, 2) != '\0') || invalidnum(*(argv + 1), seconds)) {
-			usage(*argv);
-		} else {
-			time_t curtime = time(NULL);
-			time_t newtime = 0;
+	char **endptr = calloc(2, sizeof(endptr));
+	long long seconds = strtoll(*(argv + 1), endptr, 10);
 
-			puts("");
+	if ((strnlen(*endptr, 2) != '\0') || invalidnum(*(argv + 1), seconds)) {
+		usage(*argv);
+		return 0;
+	}
+
+	time_t curtime = time(NULL);
+	time_t newtime = 0;
+
+	puts("");
+	tickprint(seconds);
+
+	while (seconds > 0) {
+		usleep(100);
+		newtime = time(NULL);
+
+		if ((newtime - curtime) >= 1) {
+			curtime = newtime;
+			--seconds;
 			tickprint(seconds);
-
-			while (seconds > 0) {
-				usleep(100);
-				newtime = time(NULL);
-
-				if ((newtime - curtime) >= 1) {
-					curtime = newtime;
-					--seconds;
-					tickprint(seconds);
-				}
-			}
-
-			linedel();
-			puts("\aTIME'S UP!\n");
 		}
 	}
+
+	linedel();
+	puts("\aTIME'S UP!\n");
 
 	return 0;
 }
