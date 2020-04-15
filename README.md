@@ -28,6 +28,13 @@ less naive implementation by including bounds checking, and demonstrate both
 the ideal use case and the unhappy-path use case where the source string is
 longer than the space allocated for the destination buffer.
 
+#### [downcounter][downcounter]
+
+Provide a simple console-based countdown timer that shows a number counting
+down from the numeric command line argument to 1, then attempts a console beep
+and prints a "TIME'S UP!" message before exiting.  It uses usleep to avoid too
+much CPU churn for a trivial timer loop.
+
 #### [floaters][floaters]
 
 Demonstrate problems with the IEEE 754 standard used as the default fractional
@@ -118,6 +125,7 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [cat-v]: http://harmful.cat-v.org/cat-v/
 [copystring]: /file?ci=tip&name=adhockery/copystring.c
 [coreutil]: /dir?ci=tip&name=coreutil
+[copystring]: /file?ci=tip&name=adhockery/downcounter.c
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
 [mimic]: coreutil/mimic.c
