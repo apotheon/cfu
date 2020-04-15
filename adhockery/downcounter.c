@@ -13,12 +13,15 @@
  * accurate length, at a 100 microsecond level of precision.                 *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#define MAXDIGITS 16
+
+void linedel();
 void usage(char *cmdtxt);
 void tickprint(long long sec);
 
 int main(int argc, char **argv) {
 	if (argc == 2) {
-		char **endptr = calloc(16, sizeof(endptr));
+		char **endptr = calloc(MAXDIGITS, sizeof(endptr));
 		long long seconds = strtoll(*(argv + 1), endptr, 10);
 
 		if (strnlen(*endptr, 2) == '\0') {
@@ -38,7 +41,8 @@ int main(int argc, char **argv) {
 				}
 			}
 
-			printf("\r\aTIME'S UP!\n");
+			linedel();
+			printf("\aTIME'S UP!\n");
 		} else {
 			usage(*argv);
 		}
@@ -49,13 +53,18 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
+void linedel() {
+	for (int i = MAXDIGITS; i > 0; --i) printf("\b");
+}
+
 void usage(char *cmdtxt) {
 	printf("%s: downcounter <NUM>\n", cmdtxt);
 	puts("        Count down from NUM to 0, and beep.");
-	puts("        NUM must be no more than 16 digits.");
+	printf("        NUM must be no more than %d digits.\n", MAXDIGITS);
 }
 
 void tickprint(long long sec) {
-	printf("\r%lld\t", sec);
+	linedel();
+	printf("%lld\t", sec);
 	fflush(stdout);
 }
