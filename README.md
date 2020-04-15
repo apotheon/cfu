@@ -125,7 +125,7 @@ be obvious -- replacing `cat -v foo` with `cat foo|printable -v`.
 [cat-v]: http://harmful.cat-v.org/cat-v/
 [copystring]: /file?ci=tip&name=adhockery/copystring.c
 [coreutil]: /dir?ci=tip&name=coreutil
-[copystring]: /file?ci=tip&name=adhockery/downcounter.c
+[downcounter]: /file?ci=tip&name=adhockery/downcounter.c
 [echo]: coreutil/posix/echo.c
 [floaters]: /file?ci=tip&name=adhockery/floaters.c
 [mimic]: coreutil/mimic.c
