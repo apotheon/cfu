@@ -96,4 +96,14 @@ void usage(char *cmdtxt) {
 	printf("     For any other argument, or for a missing argument, ");
 	printf("print this message.\n\n");
 
+	puts("CAVEATS:");
+	printf("     This implementation is based on (Unix) clock time, not ");
+	printf("the amount of\n");
+	printf("     time that has elapsed.  As a result, the length of the ");
+	printf("first \"second\"\n");
+	printf("     lies in a range between zero seconds and one second.  ");
+	printf("All subsequent\n");
+	printf("     \"seconds\" should be of fairly accurate duration, to a ");
+	printf("100 microsecond\n");
+	printf("     level of precision.\n\n");
 }
