@@ -6,8 +6,9 @@
 
 #define MAXDIGITS 16
 
-int invalidnum(char *numarg, long long seconds);
+int invalidnum(char *numarg, char *end, long long seconds);
 int negative(long long seconds);
+int nonnumeric(char *end);
 int oversize(char *numarg);
 
 void linedel();
@@ -23,7 +24,7 @@ int main(int argc, char **argv) {
 	char **endptr = calloc(2, sizeof(endptr));
 	long long seconds = strtoll(*(argv + 1), endptr, 10);
 
-	if ((strnlen(*endptr, 2) != '\0') || invalidnum(*(argv + 1), seconds)) {
+	if (invalidnum(*(argv + 1), *endptr, seconds)) {
 		usage(*argv);
 		return 0;
 	}
@@ -51,13 +52,17 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
-int invalidnum(char *numarg, long long seconds) {
-	return (oversize(numarg) || negative(seconds));
+int invalidnum(char *numarg, char *end, long long seconds) {
+	return (oversize(numarg) || nonnumeric(end) || negative(seconds));
 }
 
 int negative(long long seconds) {
 	if (seconds >= 0) return 0;
 	else return 1;
+}
+
+int nonnumeric(char *end) {
+	return (strnlen(end, 2) != '\0');
 }
 
 int oversize(char *numarg) {
