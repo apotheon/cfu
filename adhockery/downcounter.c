@@ -29,6 +29,8 @@ int main(int argc, char **argv) {
 		return 0;
 	}
 
+	free(endptr);
+
 	time_t curtime = time(NULL);
 	time_t newtime = 0;
 
