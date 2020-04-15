@@ -18,7 +18,7 @@ void tickprint(long long sec);
 
 int main(int argc, char **argv) {
 	if (argc == 2) {
-		char **endptr = calloc(1000, sizeof(endptr));
+		char **endptr = calloc(16, sizeof(endptr));
 		long long seconds = strtoll(*(argv + 1), endptr, 10);
 
 		if (strnlen(*endptr, 2) == '\0') {
@@ -52,6 +52,7 @@ int main(int argc, char **argv) {
 void usage(char *cmdtxt) {
 	printf("%s: downcounter <NUM>\n", cmdtxt);
 	puts("        Count down from NUM to 0, and beep.");
+	puts("        NUM must be no more than 16 digits.");
 }
 
 void tickprint(long long sec) {
