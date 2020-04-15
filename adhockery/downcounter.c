@@ -15,13 +15,13 @@
 
 #define MAXDIGITS 16
 
+int invalidnum(char *numarg, long long seconds);
 int negative(long long seconds);
 int oversize(char *numarg);
-int invalidnum(char *numarg, long long seconds);
 
 void linedel();
-void usage(char *cmdtxt);
 void tickprint(long long sec);
+void usage(char *cmdtxt);
 
 int main(int argc, char **argv) {
 	if (argc != 2) {
@@ -76,6 +76,12 @@ void linedel() {
 	fflush(stdout);
 }
 
+void tickprint(long long sec) {
+	linedel();
+	printf("%lld", sec);
+	fflush(stdout);
+}
+
 void usage(char *cmdtxt) {
 	puts("USAGE:");
 	printf("     %s <NUM>\n\n", cmdtxt);
@@ -89,10 +95,4 @@ void usage(char *cmdtxt) {
 	printf("     For any other argument, or for a missing argument, ");
 	printf("print this message.\n\n");
 
-}
-
-void tickprint(long long sec) {
-	linedel();
-	printf("%lld", sec);
-	fflush(stdout);
 }
