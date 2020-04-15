@@ -72,7 +72,7 @@ int oversize(char *numarg) {
 }
 
 void linedel() {
-	for (int i = MAXDIGITS; i >= 0; --i) printf("\b");
+	printf("\33[2K\r");
 	fflush(stdout);
 }
 
