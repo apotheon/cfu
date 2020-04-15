@@ -4,10 +4,17 @@
 #include <time.h>
 #include <unistd.h>
 
-void usage(char *cmdtxt) {
-	printf("%s: downcounter <NUM>\n", cmdtxt);
-	puts("        Count down from NUM to 0, and beep.");
-}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+ * This is a naive implementation, in that it bases its count on Unix time   *
+ * seconds.  Ideally, it should instead check for millions of microseconds   *
+ * since the last tick.  Given the only one-second precision based on clock  *
+ * time, the first "second" may actually range anywhere from about a second  *
+ * down to about zero seconds.  Subsequent seconds should be of fairly       *
+ * accurate length, at a 100 microsecond level of precision.                 *
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+void usage(char *cmdtxt);
+void tickprint(long long sec);
 
 int main(int argc, char **argv) {
 	if (argc == 2) {
@@ -18,8 +25,7 @@ int main(int argc, char **argv) {
 			time_t curtime = time(NULL);
 			time_t newtime = 0;
 
-			printf("%lld\t", seconds);
-			fflush(stdout);
+			tickprint(seconds);
 
 			while (seconds > 0) {
 				usleep(100);
@@ -28,8 +34,7 @@ int main(int argc, char **argv) {
 				if ((newtime - curtime) >= 1) {
 					curtime = newtime;
 					--seconds;
-					printf("\r%lld\t", seconds);
-					fflush(stdout);
+					tickprint(seconds);
 				}
 			}
 
@@ -42,4 +47,14 @@ int main(int argc, char **argv) {
 	}
 
 	return 0;
+}
+
+void usage(char *cmdtxt) {
+	printf("%s: downcounter <NUM>\n", cmdtxt);
+	puts("        Count down from NUM to 0, and beep.");
+}
+
+void tickprint(long long sec) {
+	printf("\r%lld\t", sec);
+	fflush(stdout);
 }
