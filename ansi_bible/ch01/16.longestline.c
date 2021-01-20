@@ -33,7 +33,7 @@ int main() {
     }
 
     printf("%d: ", longest_length);
-    if (longest_length > 0) printf("%s", longest);
+    if (longest_length > 0) printf("%s\n", longest);
 
     return 0;
 }
@@ -44,11 +44,6 @@ int get_line(char line[], int maxlength) {
 
     while ((c = getchar()) != EOF && c != '\n') {
         if (i < maxlength - 1) line[i] = c;
-        ++i;
-    }
-
-    if (c == '\n') {
-        line[i] = c;
         ++i;
     }
 
