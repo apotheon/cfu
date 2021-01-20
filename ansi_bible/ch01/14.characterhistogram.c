@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define MAXCHARS 1000000
@@ -12,29 +13,20 @@ int main() {
     int charnum = 0;
     int exists = 0;
 
-    int characters[MAXCHARS];
-    int charcounts[MAXCHARS];
-
-    /*
-     * I've already done the for loop version of zeroing out arrays in another
-     * exercise, so I cheated a little by using memset(), which has not been
-     * introduced before this exercise in K&R.
-     */
-
-    memset(characters, 0, MAXCHARS);
-    memset(charcounts, 0, MAXCHARS);
+    int *characters = calloc(MAXCHARS, sizeof(characters));
+    int *charcounts = calloc(MAXCHARS, sizeof(charcounts));
 
     while (((c = getchar()) != EOF) && (charnum < MAXCHARS)) {
         for (int i = 0; i < charnum; ++i) {
-            if (c == characters[i]) {
-                ++charcounts[i];
+            if (c == *(characters + i)) {
+                ++(*(charcounts + i));
                 exists = 1;
             }
         }
 
         if (exists == 0) {
-            characters[charnum] = c;
-            charcounts[charnum] = 1;
+            *(characters + charnum) = c;
+            *(charcounts + charnum) = 1;
 
             ++charnum;
         } else {
@@ -45,21 +37,21 @@ int main() {
     printf("characters: %d\n", charnum - 1);
 
     for (int i = 0; i < charnum - 1; ++i) {
-        if (characters[i] != 0) {
-            if (characters[i] == ' ') {
+        if (*(characters + i) != 0) {
+            if (*(characters + i) == ' ') {
                 printf("\\s");
-            } else if (characters[i] == '\n') {
+            } else if (*(characters + i) == '\n') {
                 printf("\\n");
-            } else if (characters[i] == '\t') {
+            } else if (*(characters + i) == '\t') {
                 printf("\\t");
             } else {
                 putchar(' ');
-                putchar(characters[i]);
+                putchar(*(characters + i));
             }
 
             printf(": ");
 
-            for (int n = 0; n < charcounts[i]; ++n) putchar('-');
+            for (int n = 0; n < *(charcounts + i); ++n) putchar('-');
 
             putchar('\n');
         }
