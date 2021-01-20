@@ -6,7 +6,7 @@
 
 float f_to_c(float fahrenheit_temp);
 
-int main() {
+int main(void) {
     float f = 0.0;
     float c = 0.0;
     float limit = 300;
